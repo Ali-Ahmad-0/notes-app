@@ -9,12 +9,12 @@ class SearchIcon extends StatelessWidget {
       height: 45,
       width: 45,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(12),
           color: Colors.white.withOpacity(0.1)),
       child: Center(
         child: Icon(
           Icons.search_rounded,
-          size: 35,
+          size: 30,
         ),
       ),
     );
