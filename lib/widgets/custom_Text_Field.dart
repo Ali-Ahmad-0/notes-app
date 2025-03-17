@@ -14,11 +14,11 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       maxLines: maxLines,
       decoration: InputDecoration(
-        hintText: content,
-        hintStyle: TextStyle(color: Colors.white),
-        border: buildBorder(kPrimaryColor),
-        enabledBorder: buildBorder(kPrimaryColor),
-      ),
+          hintText: content,
+          hintStyle: TextStyle(color: Colors.white),
+          border: buildBorder(Colors.white),
+          enabledBorder: buildBorder(Colors.white),
+          focusedBorder: buildBorder(kPrimaryColor)),
     );
   }
 
