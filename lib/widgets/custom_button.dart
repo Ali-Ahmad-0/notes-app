@@ -13,7 +13,7 @@ class CustomButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
           color: kPrimaryColor, borderRadius: BorderRadius.circular(12)),
-      child: Center(
+      child: const Center(
         child: Text(
           'Add',
           style: TextStyle(

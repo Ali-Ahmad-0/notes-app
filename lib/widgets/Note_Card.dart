@@ -10,13 +10,13 @@ class NoteCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return EditNoteview();
+          return const EditNoteview();
         }));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8),
         child: Container(
-          padding: EdgeInsets.only(top: 10, bottom: 10, left: 8),
+          padding: const EdgeInsets.only(top: 10, bottom: 10, left: 8),
           decoration: BoxDecoration(
               color: Colors.lightBlueAccent,
               borderRadius: BorderRadius.circular(16)),
@@ -24,12 +24,12 @@ class NoteCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               ListTile(
-                title: Text(
+                title: const Text(
                   'Flutter tips',
                   style: TextStyle(color: Colors.black, fontSize: 27),
                 ),
-                subtitle: Padding(
-                  padding: const EdgeInsets.only(top: 25),
+                subtitle: const Padding(
+                  padding: EdgeInsets.only(top: 25),
                   child: Text(
                     'There are some tips and trick for flutter mobile development',
                     style: TextStyle(fontSize: 18, color: Colors.black54),
@@ -37,14 +37,14 @@ class NoteCard extends StatelessWidget {
                 ),
                 trailing: IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       FontAwesomeIcons.trash,
                       color: Colors.black,
                       size: 30,
                     )),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 16, top: 15, bottom: 10),
+              const Padding(
+                padding: EdgeInsets.only(right: 16, top: 15, bottom: 10),
                 child: Text(
                   'Mar 16 2025 ',
                   style: TextStyle(fontSize: 18, color: Colors.black54),

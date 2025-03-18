@@ -12,15 +12,15 @@ class EditNoteview extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
         child: Column(
           children: [
-            CustomAppBar(
+            const CustomAppBar(
               title: 'Edit note',
               icon: Icons.check,
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             CustomTextField(content: 'Title'),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             CustomTextField(

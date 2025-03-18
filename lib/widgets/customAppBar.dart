@@ -9,14 +9,14 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 70,
         ),
         Text(
           title,
-          style: TextStyle(color: Colors.white, fontSize: 30),
+          style: const TextStyle(color: Colors.white, fontSize: 30),
         ),
-        Spacer(),
+        const Spacer(),
         SearchIcon(icon: icon,)
       ],
     );
