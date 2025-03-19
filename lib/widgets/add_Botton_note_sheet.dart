@@ -29,9 +29,9 @@ class AddFormField extends StatefulWidget {
 }
 
 class _AddFormFieldState extends State<AddFormField> {
+  final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
-  final GlobalKey<FormState> formKey = GlobalKey();
   String? title, subTitle;
   @override
   Widget build(BuildContext context) {
@@ -62,12 +62,12 @@ class _AddFormFieldState extends State<AddFormField> {
           ),
           CustomButton(
             ontap: () {
-              if (formKey.currentState!.validate()) {
+              if (formKey.currentState != null &&
+                  formKey.currentState!.validate()) {
                 formKey.currentState!.save();
               } else {
-                autovalidateMode = AutovalidateMode.always;
                 setState(() {
-                  
+                  autovalidateMode = AutovalidateMode.always;
                 });
               }
             },
