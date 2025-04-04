@@ -6,8 +6,19 @@ import 'package:notes_app/widgets/add_note_bottom_sheet.dart';
 import 'package:notes_app/widgets/customAppBar.dart';
 import 'package:notes_app/widgets/notes_list_view.dart';
 
-class NotesView extends StatelessWidget {
+class NotesView extends StatefulWidget {
   const NotesView({super.key});
+
+  @override
+  State<NotesView> createState() => _NotesViewState();
+}
+
+class _NotesViewState extends State<NotesView> {
+  @override
+  void initState() {
+    BlocProvider.of<NoteCubit>(context).fetchAllnotes();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
