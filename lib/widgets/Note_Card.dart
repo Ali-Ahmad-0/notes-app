@@ -1,57 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/Views/edit_note.dart';
+import 'package:notes_app/models/note_model.dart';
 
-class NoteCard extends StatelessWidget {
-  const NoteCard({super.key});
-
+class NoteItem extends StatelessWidget {
+  const NoteItem({super.key ,  required this.note});
+final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return const EditNoteview();
-        }));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) {
+            return const EditNoteview();
+          }),
+        );
       },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        child: Container(
-          padding: const EdgeInsets.only(top: 10, bottom: 10, left: 8),
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent,
-              borderRadius: BorderRadius.circular(16)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              ListTile(
-                title: const Text(
-                  'Flutter tips',
-                  style: TextStyle(color: Colors.black, fontSize: 27),
-                ),
-                subtitle: const Padding(
-                  padding: EdgeInsets.only(top: 25),
-                  child: Text(
-                    'There are some tips and trick for flutter mobile development',
-                    style: TextStyle(fontSize: 18, color: Colors.black54),
-                  ),
-                ),
-                trailing: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      FontAwesomeIcons.trash,
-                      color: Colors.black,
-                      size: 30,
-                    )),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.lightBlueAccent,
+            borderRadius: BorderRadius.circular(16)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            ListTile(
+              title:  Text(
+                note.title,
+                style: TextStyle(color: Colors.black, fontSize: 27),
               ),
-              const Padding(
-                padding: EdgeInsets.only(right: 16, top: 15, bottom: 10),
+              subtitle:  Padding(
+                padding: const EdgeInsets.only(top: 25),
                 child: Text(
-                  'Mar 16 2025 ',
+                  note.subTitle,
                   style: TextStyle(fontSize: 18, color: Colors.black54),
                 ),
-              )
-            ],
-          ),
+              ),
+              trailing: IconButton(
+                  onPressed: () {
+                    
+                  },
+                  icon: const Icon(
+                    FontAwesomeIcons.trash,
+                    color: Colors.black,
+                    size: 30,
+                  )),
+            ),
+             Padding(
+              padding: const EdgeInsets.only(right: 16, top: 15, bottom: 10),
+              child: Text(
+               note.date ,
+                style: TextStyle(fontSize: 18, color: Colors.black54),
+              ),
+            )
+          ],
         ),
       ),
     );
