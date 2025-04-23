@@ -55,7 +55,7 @@ class _AddFormFieldState extends State<AddFormField> {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                     var currentDate = DateTime.now();
-
+                    
                     var noteModel = NoteModel(
                         color: Colors.indigo.value,
                         date: DateTime.now().toString(),
