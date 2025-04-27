@@ -17,6 +17,13 @@ class CustomTextField extends StatelessWidget {
     return TextFormField(
       onChanged: onChanged,
       onSaved: onsaved,
+      validator: (value) {
+        if (value?.isEmpty ?? true) {
+          return 'This field is required';
+        } else {
+          return null;
+        }
+      },
       maxLines: maxLines,
       decoration: InputDecoration(
           hintText: content,

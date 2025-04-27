@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
@@ -44,8 +45,26 @@ class _AddFormFieldState extends State<AddFormField> {
             content: 'Content',
             maxLines: 5,
           ),
+          SizedBox(
+            height: 20,
+          ),
+          SizedBox(
+            height: 60,
+            child: ListView.builder(
+                itemCount: 8,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(3),
+                    child: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.indigoAccent,
+                    ),
+                  );
+                }),
+          ),
           const SizedBox(
-            height: 120,
+            height: 30,
           ),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
@@ -55,7 +74,7 @@ class _AddFormFieldState extends State<AddFormField> {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                     var currentDate = DateTime.now();
-                    
+
                     var noteModel = NoteModel(
                         color: Colors.indigo.value,
                         date: DateTime.now().toString(),

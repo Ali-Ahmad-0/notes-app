@@ -26,8 +26,7 @@ class NoteItem extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
-            color: Colors.lightBlueAccent,
-            borderRadius: BorderRadius.circular(16)),
+            color: Colors.white, borderRadius: BorderRadius.circular(16)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -44,50 +43,49 @@ class NoteItem extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                      
-                        builder: (BuildContext builder) {
-                          return Stack(children: [
-                            BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 20, sigmaY: 30),
-                              child: Container(
-                                  color: const Color.fromARGB(255, 94, 94, 94)
-                                      .withOpacity(0.3)),
-                            ),
-                            AlertDialog(
-                              title: Text('Delete'),
-                              content: Text(
-                                  'Are you sure you want to delete this note?'),
-                              actions: <Widget>[
-                                TextButton(
-                                    onPressed: () {
-                                      note.delete();
-                                      BlocProvider.of<NoteCubit>(context)
-                                          .fetchAllnotes();
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text(
-                                      'Delete',
-                                      style: TextStyle(color: Colors.red),
-                                    )),
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text('Cancel'))
-                              ],
-                            ),
-                          ]);
-                        });
-                  
-                  },
-                  icon: const Icon(
-                    FontAwesomeIcons.trash,
-                    color: Colors.black,
-                    size: 30,
-                  )),
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext builder) {
+                        return Stack(children: [
+                          BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 20, sigmaY: 30),
+                            child: Container(
+                                color: const Color.fromARGB(255, 94, 94, 94)
+                                    .withOpacity(0.3)),
+                          ),
+                          AlertDialog(
+                            title: Text('Delete'),
+                            content: Text(
+                                'Are you sure you want to delete this note?'),
+                            actions: <Widget>[
+                              TextButton(
+                                  onPressed: () {
+                                    note.delete();
+                                    BlocProvider.of<NoteCubit>(context)
+                                        .fetchAllnotes();
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                    'Delete',
+                                    style: TextStyle(color: Colors.red),
+                                  )),
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text('Cancel'))
+                            ],
+                          ),
+                        ]);
+                      });
+                },
+                icon: const Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                  size: 45,
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 16, top: 15, bottom: 10),
