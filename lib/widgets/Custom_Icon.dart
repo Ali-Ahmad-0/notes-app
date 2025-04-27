@@ -8,17 +8,17 @@ class CustomIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        height: 45,
-        width: 45,
+        height: 50,
+        width: 50,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.white.withAlpha(40)),
+          borderRadius: BorderRadius.circular(12),
+        ),
         child: Center(
           child: IconButton(
             onPressed: onPressed,
             icon: Icon(
               icon,
-              size: 30,
+              size: 40,
             ),
           ),
         ),

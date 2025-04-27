@@ -14,6 +14,7 @@ class EditNoteview extends StatefulWidget {
 
 class _EditNoteviewState extends State<EditNoteview> {
   String? title, subtitle;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

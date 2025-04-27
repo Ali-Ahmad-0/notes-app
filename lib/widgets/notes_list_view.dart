@@ -5,9 +5,13 @@ import 'package:notes_app/cubits/notes_cubit/notes_states.dart' show NotesState;
 import 'package:notes_app/models/note_model.dart' show NoteModel;
 import 'package:notes_app/widgets/Note_Card.dart';
 
-class NotesListView extends StatelessWidget {
+class NotesListView extends StatefulWidget {
   const NotesListView({super.key});
+  @override
+  State<NotesListView> createState() => _NotesListViewState();
+}
 
+class _NotesListViewState extends State<NotesListView> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NoteCubit, NotesState>(
@@ -23,14 +27,19 @@ class NotesListView extends StatelessWidget {
                   background: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
-                      color: Colors.red,
+                      color: Colors.indigo,
                     ),
-                    child: const Icon(
-                      Icons.delete,
-                      color: Colors.white,
+                    child: Center(
+                      child: Text('Edit',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold)),
                     ),
                   ),
-                  key: ValueKey(notes[index]),
+                  key: ValueKey(
+                    notes[index],
+                  ),
                   child: NoteItem(
                     note: notes[index],
                   ),

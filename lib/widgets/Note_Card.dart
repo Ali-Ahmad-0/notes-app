@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,7 +17,9 @@ class NoteItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) {
-            return  EditNoteview(noteModel: note,);
+            return EditNoteview(
+              noteModel: note,
+            );
           }),
         );
       },
@@ -41,8 +45,43 @@ class NoteItem extends StatelessWidget {
               ),
               trailing: IconButton(
                   onPressed: () {
-                    note.delete();
-                    BlocProvider.of<NoteCubit>(context).fetchAllnotes();
+                    showDialog(
+                        context: context,
+                      
+                        builder: (BuildContext builder) {
+                          return Stack(children: [
+                            BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 20, sigmaY: 30),
+                              child: Container(
+                                  color: const Color.fromARGB(255, 94, 94, 94)
+                                      .withOpacity(0.3)),
+                            ),
+                            AlertDialog(
+                              title: Text('Delete'),
+                              content: Text(
+                                  'Are you sure you want to delete this note?'),
+                              actions: <Widget>[
+                                TextButton(
+                                    onPressed: () {
+                                      note.delete();
+                                      BlocProvider.of<NoteCubit>(context)
+                                          .fetchAllnotes();
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      'Delete',
+                                      style: TextStyle(color: Colors.red),
+                                    )),
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text('Cancel'))
+                              ],
+                            ),
+                          ]);
+                        });
+                  
                   },
                   icon: const Icon(
                     FontAwesomeIcons.trash,
