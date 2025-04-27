@@ -15,11 +15,12 @@ class NoteItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) {
-            return const EditNoteview();
+            return  EditNoteview(noteModel: note,);
           }),
         );
       },
       child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
             color: Colors.lightBlueAccent,
             borderRadius: BorderRadius.circular(16)),
@@ -29,13 +30,13 @@ class NoteItem extends StatelessWidget {
             ListTile(
               title: Text(
                 note.title,
-                style: TextStyle(color: Colors.black, fontSize: 27),
+                style: const TextStyle(color: Colors.black, fontSize: 27),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 25),
                 child: Text(
                   note.subTitle,
-                  style: TextStyle(fontSize: 18, color: Colors.black54),
+                  style: const TextStyle(fontSize: 18, color: Colors.black54),
                 ),
               ),
               trailing: IconButton(
@@ -53,7 +54,7 @@ class NoteItem extends StatelessWidget {
               padding: const EdgeInsets.only(right: 16, top: 15, bottom: 10),
               child: Text(
                 note.date.substring(0, 10),
-                style: TextStyle(fontSize: 18, color: Colors.black54),
+                style: const TextStyle(fontSize: 18, color: Colors.black54),
               ),
             )
           ],

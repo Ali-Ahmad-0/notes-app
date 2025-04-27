@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
-import 'package:notes_app/cubits/notes_cubit/notes_states.dart';
-import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/customAppBar.dart';
 import 'package:notes_app/widgets/notes_list_view.dart';
-
-import 'Note_Card.dart';
 
 class NotesViewBody extends StatefulWidget {
   const NotesViewBody({super.key});
@@ -25,7 +21,7 @@ class _NotesViewBodyState extends State<NotesViewBody> {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 500),
+      padding: EdgeInsets.symmetric(horizontal: 12),
       child: Column(
         children: [
           SizedBox(
