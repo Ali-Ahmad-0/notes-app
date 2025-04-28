@@ -25,26 +25,8 @@ class _NotesListViewState extends State<NotesListView> {
               padding: EdgeInsets.zero,
             
               itemBuilder: (context, index) {
-                return Dismissible(
-                  background: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: Colors.red,
-                    ),
-                    child: Center(
-                      child: Text('Delete',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold)),
-                    ),
-                  ),
-                  key: ValueKey(
-                    notes[index],
-                  ),
-                  child: NoteItem(
-                    note: notes[index],
-                  ),
+                return NoteItem(
+                  note: notes[index],
                 );
               }),
         );

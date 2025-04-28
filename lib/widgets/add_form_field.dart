@@ -47,12 +47,9 @@ class _AddFormFieldState extends State<AddFormField> {
             maxLines: 5,
           ),
           SizedBox(
-            height: 20,
+            height: 30,
           ),
-          SizedBox(
-            height: 60,
-            child: Colors_list(),
-          ),
+          Colors_list(),
           const SizedBox(
             height: 30,
           ),
@@ -88,6 +85,3 @@ class _AddFormFieldState extends State<AddFormField> {
     );
   }
 }
-
-
-
