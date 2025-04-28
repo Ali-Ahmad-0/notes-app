@@ -20,17 +20,19 @@ class _NotesListViewState extends State<NotesListView> {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
           child: ListView.builder(
+            
               itemCount: notes.length,
               padding: EdgeInsets.zero,
+            
               itemBuilder: (context, index) {
                 return Dismissible(
                   background: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
-                      color: Colors.indigo,
+                      color: Colors.red,
                     ),
                     child: Center(
-                      child: Text('Edit',
+                      child: Text('Delete',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

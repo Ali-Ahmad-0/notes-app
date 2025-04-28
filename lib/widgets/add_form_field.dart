@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/widgets/colors_list.dart';
 import 'package:notes_app/widgets/custom_Text_Field.dart';
 import 'package:notes_app/widgets/custom_button.dart';
 
@@ -50,18 +51,7 @@ class _AddFormFieldState extends State<AddFormField> {
           ),
           SizedBox(
             height: 60,
-            child: ListView.builder(
-                itemCount: 8,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(3),
-                    child: CircleAvatar(
-                      radius: 30,
-                      backgroundColor: Colors.indigoAccent,
-                    ),
-                  );
-                }),
+            child: Colors_list(),
           ),
           const SizedBox(
             height: 30,
@@ -98,3 +88,6 @@ class _AddFormFieldState extends State<AddFormField> {
     );
   }
 }
+
+
+
