@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/customAppBar.dart';
@@ -20,7 +21,7 @@ class _EditNoteviewState extends State<EditNoteview> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-        child: Column(
+        child: ListView(
           children: [
             CustomAppBar(
               onPressed: () {
@@ -53,6 +54,9 @@ class _EditNoteviewState extends State<EditNoteview> {
               onChanged: (value) {
                 subtitle = value;
               },
+            ),
+            SvgPicture.asset(
+              'Assets/images/note.svg',
             )
           ],
         ),

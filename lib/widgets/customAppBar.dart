@@ -10,16 +10,14 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const SizedBox(
-          height: 70,
-        ),
         Text(
           title,
           style: const TextStyle(
               fontSize: 40, fontFamily: 'Times', fontWeight: FontWeight.bold),
         ),
-        const Spacer(),
+        //   const Spacer(),
         CustomIcon(
           onPressed: onPressed,
           icon: icon,
