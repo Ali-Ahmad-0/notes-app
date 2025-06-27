@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart' show StatelessWidget;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app/constants.dart';
-import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
-import 'package:notes_app/widgets/add_form_field.dart';
-import 'package:notes_app/widgets/color_item.dart';
+import '../constants.dart';
+import '../cubits/add_note_cubit/add_note_cubit.dart';
+import 'add_form_field.dart';
+import 'color_item.dart';
 
 class Colors_list extends StatefulWidget {
   

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:notes_app/constants.dart';
-import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
-import 'package:notes_app/models/note_model.dart';
-import 'package:notes_app/widgets/color_item.dart' show Color_item;
-import 'package:notes_app/widgets/colors_list.dart';
-import 'package:notes_app/widgets/customAppBar.dart';
-import 'package:notes_app/widgets/custom_Text_Field.dart';
+
+import '../constants.dart';
+import '../cubits/notes_cubit/notes_cubit.dart';
+import '../models/note_model.dart';
+import '../widgets/color_item.dart' show Color_item;
+import '../widgets/customAppBar.dart';
+import '../widgets/custom_Text_Field.dart';
 
 class EditNoteview extends StatefulWidget {
   const EditNoteview({super.key, required this.noteModel});
@@ -95,7 +95,6 @@ class _EditNoteColorState extends State<EditNoteColor> {
   late int currentIndex;
   @override
   void initState() {
-    // TODO: implement initState
     currentIndex = kcolorsList.indexOf(Color(widget.noteModel.color));
     super.initState();
   }

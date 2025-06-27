@@ -2,11 +2,11 @@ import 'dart:ui' show ImageFilter;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider, BlocBuilder;
-import 'package:notes_app/cubits/notes_cubit/notes_states.dart';
-import 'package:notes_app/models/note_model.dart';
-import 'package:notes_app/widgets/add_note_bottom_sheet.dart';
-import 'package:notes_app/widgets/customAppBar.dart';
-import 'package:notes_app/widgets/notes_view_body.dart';
+import '../cubits/notes_cubit/notes_states.dart';
+import '../models/note_model.dart';
+import '../widgets/add_note_bottom_sheet.dart';
+import '../widgets/customAppBar.dart';
+import '../widgets/notes_view_body.dart';
 
 import '../cubits/notes_cubit/notes_cubit.dart';
 import '../widgets/Note_Card.dart';
@@ -43,14 +43,13 @@ class _NotesViewState extends State<NotesView> {
 
   Widget buildNotesList() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 16),
+      padding: EdgeInsets.symmetric(vertical: 8),
       child: ListView.builder(
           itemCount: isSearching ? filteredNotes.length : allnotes.length,
           padding: EdgeInsets.zero,
           itemBuilder: (context, index) {
             return Dismissible(
               background: Container(
-                
                 child: Center(
                   child: Text(
                     'Delete',
@@ -79,23 +78,29 @@ class _NotesViewState extends State<NotesView> {
                           ),
                           backgroundColor: const Color(0xff151515),
                           title: Row(
-                            children: const [
+                            children: [
                               Icon(Icons.warning,
-                                  color: Colors.deepOrangeAccent),
+                                  color: Colors.deepOrangeAccent,
+                                  size:
+                                      MediaQuery.of(context).size.width * 0.09),
                               SizedBox(width: 8),
                               Text(
                                 'Confirm Deletion',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.05,
                                 ),
                               ),
                             ],
                           ),
-                          content: const Text(
+                          content: Text(
                             'This note will be permanently deleted.\nDo you really want to proceed?',
-                            style:
-                                TextStyle(color: Colors.white70, fontSize: 16),
+                            style: TextStyle(
+                                color: Colors.white70,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.045),
                           ),
                           actionsPadding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 8),
@@ -181,7 +186,7 @@ class _NotesViewState extends State<NotesView> {
     } else {
       return [
         IconButton(
-          icon: Icon(Icons.search_rounded, color: Colors.white, size: 30),
+          icon: Icon(Icons.search_rounded, color: Colors.white, size: 42),
           onPressed: () {
             ModalRoute.of(
               context,
@@ -227,8 +232,8 @@ class _NotesViewState extends State<NotesView> {
       ),
       resizeToAvoidBottomInset: false,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromARGB(221, 255, 255, 255),
-        foregroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(200, 0, 0, 0),
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
         onPressed: () {
           showModalBottomSheet(
               isScrollControlled: true,
