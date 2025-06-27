@@ -1,3 +1,5 @@
+import 'dart:ui' show ImageFilter;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider, BlocBuilder;
 import 'package:notes_app/cubits/notes_cubit/notes_states.dart';
@@ -39,11 +41,6 @@ class _NotesViewState extends State<NotesView> {
     );
   }
 
-  List listBuilder() {
-    List<NoteModel> newNote = [];
-    return isSearching ? newNote = filteredNotes : newNote = allnotes;
-  }
-
   Widget buildNotesList() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 16),
@@ -58,7 +55,73 @@ class _NotesViewState extends State<NotesView> {
               key: Key(isSearching
                   ? filteredNotes[index].title
                   : allnotes[index].title),
-              // onDismissed: ,
+              confirmDismiss: (direction) async {
+                return await showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Stack(children: [
+                        BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 30),
+                          child: Container(
+                              color: const Color.fromARGB(255, 94, 94, 94)
+                                  .withOpacity(0.3)),
+                        ),
+                        AlertDialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          backgroundColor: const Color(0xff151515),
+                          title: Row(
+                            children: const [
+                              Icon(Icons.warning,
+                                  color: Colors.deepOrangeAccent),
+                              SizedBox(width: 8),
+                              Text(
+                                'Confirm Deletion',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          content: const Text(
+                            'This note will be permanently deleted.\nDo you really want to proceed?',
+                            style:
+                                TextStyle(color: Colors.white70, fontSize: 16),
+                          ),
+                          actionsPadding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
+                          actions: [
+                            TextButton.icon(
+                              onPressed: () => Navigator.of(context).pop(true),
+                              icon: const Icon(Icons.delete_forever,
+                                  color: Colors.red),
+                              label: const Text(
+                                'Delete',
+                                style: TextStyle(
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(false),
+                              child: const Text(
+                                'Cancel',
+                                style: TextStyle(color: Colors.white70),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ]);
+                    });
+              },
+              onDismissed: (DismissDirection direction) {
+                isSearching
+                    ? filteredNotes[index].delete()
+                    : allnotes[index].delete();
+                BlocProvider.of<NoteCubit>(context).fetchAllnotes();
+              },
               child: NoteItem(
                 note: textController.text.isEmpty
                     ? allnotes[index]

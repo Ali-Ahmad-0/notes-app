@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -55,12 +56,18 @@ class NoteItem extends StatelessWidget {
                                     .withOpacity(0.3)),
                           ),
                           AlertDialog(
+                            icon: Icon(
+                              Icons.warning,
+                              color: Colors.amber,
+                            ),
+                            backgroundColor: Color(0xff151515),
                             title: Text('Delete'),
                             content: Text(
                                 'Are you sure you want to delete this note?'),
                             actions: <Widget>[
                               TextButton(
-                              
+                                  style: TextButton.styleFrom(
+                                      backgroundColor: Colors.red),
                                   onPressed: () {
                                     note.delete();
                                     BlocProvider.of<NoteCubit>(context)
@@ -68,15 +75,17 @@ class NoteItem extends StatelessWidget {
                                     Navigator.pop(context);
                                   },
                                   child: Text(
-                                    
                                     'Delete',
-                                    style: TextStyle( color: Colors.red),
+                                    style: TextStyle(color: Colors.white),
                                   )),
                               TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: Text('Cancel'))
+                                  child: Text(
+                                    'Cancel',
+                                    style: TextStyle(color: Colors.white),
+                                  ))
                             ],
                           ),
                         ]);
