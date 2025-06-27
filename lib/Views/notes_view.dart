@@ -50,6 +50,13 @@ class _NotesViewState extends State<NotesView> {
           itemBuilder: (context, index) {
             return Dismissible(
               background: Container(
+                
+                child: Center(
+                  child: Text(
+                    'Delete',
+                    style: TextStyle(fontSize: 24),
+                  ),
+                ),
                 color: Colors.red,
               ),
               key: Key(isSearching

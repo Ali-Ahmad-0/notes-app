@@ -13,100 +13,51 @@ class NoteItem extends StatelessWidget {
   final NoteModel note;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) {
-            return EditNoteview(
-              noteModel: note,
-            );
-          }),
-        );
-      },
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        decoration: BoxDecoration(
-            color: Color(note.color), borderRadius: BorderRadius.circular(16)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            ListTile(
-              title: Text(
-                note.title,
-                style: const TextStyle(color: Colors.black, fontSize: 27),
-              ),
-              subtitle: Padding(
-                padding: const EdgeInsets.only(top: 25),
-                child: Text(
-                  note.subTitle,
-                  style: const TextStyle(fontSize: 18, color: Colors.black54),
-                ),
-              ),
-              trailing: IconButton(
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext builder) {
-                        return Stack(children: [
-                          BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 20, sigmaY: 30),
-                            child: Container(
-                                color: const Color.fromARGB(255, 94, 94, 94)
-                                    .withOpacity(0.3)),
-                          ),
-                          AlertDialog(
-                            icon: Icon(
-                              Icons.warning,
-                              color: Colors.amber,
-                            ),
-                            backgroundColor: Color(0xff151515),
-                            title: Text('Delete'),
-                            content: Text(
-                                'Are you sure you want to delete this note?'),
-                            actions: <Widget>[
-                              TextButton(
-                                  style: TextButton.styleFrom(
-                                      backgroundColor: Colors.red),
-                                  onPressed: () {
-                                    note.delete();
-                                    BlocProvider.of<NoteCubit>(context)
-                                        .fetchAllnotes();
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                    'Delete',
-                                    style: TextStyle(color: Colors.white),
-                                  )),
-                              TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                    'Cancel',
-                                    style: TextStyle(color: Colors.white),
-                                  ))
-                            ],
-                          ),
-                        ]);
-                      });
-                },
-                icon: const Icon(
-                  Icons.delete,
-                  color: Colors.black,
-                  size: 45,
-                ),
-              ),
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+          color: Color(note.color), borderRadius: BorderRadius.circular(16)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          ListTile(
+            title: Text(
+              note.title,
+              style: const TextStyle(color: Colors.black, fontSize: 27),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 16, top: 15, bottom: 10),
+            subtitle: Padding(
+              padding: const EdgeInsets.only(top: 25),
               child: Text(
-                note.date.substring(0, 10),
+                note.subTitle,
                 style: const TextStyle(fontSize: 18, color: Colors.black54),
               ),
-            )
-          ],
-        ),
+            ),
+            trailing: IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return EditNoteview(
+                      noteModel: note,
+                    );
+                  }),
+                );
+              },
+              icon: const Icon(
+                FontAwesomeIcons.edit,
+                color: Colors.black,
+                size: 32,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 16, top: 15, bottom: 10),
+            child: Text(
+              note.date.substring(0, 10),
+              style: const TextStyle(fontSize: 18, color: Colors.black54),
+            ),
+          )
+        ],
       ),
     );
   }
