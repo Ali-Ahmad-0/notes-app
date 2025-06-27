@@ -34,7 +34,7 @@ class _AddFormFieldState extends State<AddFormField> {
             onsaved: (value) {
               title = value;
             },
-            content: 'Title',
+            text: 'Title',
           ),
           const SizedBox(
             height: 16,
@@ -43,7 +43,8 @@ class _AddFormFieldState extends State<AddFormField> {
             onsaved: (value) {
               subTitle = value;
             },
-            content: 'Content',
+            // content: 'Content',
+            text: 'Content',
             maxLines: 5,
           ),
           SizedBox(

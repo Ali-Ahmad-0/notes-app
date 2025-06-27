@@ -60,6 +60,7 @@ class NoteItem extends StatelessWidget {
                                 'Are you sure you want to delete this note?'),
                             actions: <Widget>[
                               TextButton(
+                              
                                   onPressed: () {
                                     note.delete();
                                     BlocProvider.of<NoteCubit>(context)
@@ -67,8 +68,9 @@ class NoteItem extends StatelessWidget {
                                     Navigator.pop(context);
                                   },
                                   child: Text(
+                                    
                                     'Delete',
-                                    style: TextStyle(color: Colors.red),
+                                    style: TextStyle( color: Colors.red),
                                   )),
                               TextButton(
                                   onPressed: () {
