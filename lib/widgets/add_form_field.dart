@@ -69,6 +69,16 @@ class _AddFormFieldState extends State<AddFormField> {
                         title: title!,
                         subTitle: subTitle!);
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          "Note added successfully ✅",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        backgroundColor: Colors.green,
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
                   } else {
                     autovalidateMode = AutovalidateMode.always;
 

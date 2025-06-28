@@ -133,6 +133,13 @@ class _NotesViewState extends State<NotesView> {
                     ? filteredNotes[index].delete()
                     : allnotes[index].delete();
                 BlocProvider.of<NoteCubit>(context).fetchAllnotes();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Note deleted 🗑️"),
+                    backgroundColor: Colors.red,
+                    duration: Duration(seconds: 2),
+                  ),
+                );
               },
               child: NoteItem(
                 note: textController.text.isEmpty
